@@ -8,6 +8,7 @@ import { red } from '@mui/material/colors';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { capitalize } from '../../shared/utility';
 
 const CardTitle = styled('div')({
     display: "flex", 
@@ -19,12 +20,6 @@ const CardTitle = styled('div')({
     }
 })
 
-const PanelBody = styled('div', {
-    shouldForwardProp: props => props !== 'active'
-})(({active}) => ({
-    display: active ? 'block' : 'none',
-}));
-
 const ExpandMore = styled((props) => {
     const { expand, ...other} = props;
     return <IconButton {...other} />
@@ -35,6 +30,15 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     })
 }));
+
+const CategoryTitle = styled('div')(({theme}) => ({
+    display: 'flex',
+    backgroundColor: theme.palette.primary.light,
+    color: 'white',
+    padding: '10px',
+    alignContent: 'center',
+
+}))
 
 //const DAY = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const DayPanel = (props) => {
@@ -48,8 +52,6 @@ const DayPanel = (props) => {
             fat += food.fat;
         });
     });*/
-
-    console.log('DayPanel' + props.inEditMode);
     return (
         <Card variant="outlined">
             
@@ -96,21 +98,19 @@ const DayPanel = (props) => {
             </CardActions>
 
             <Collapse in={props.activeModal} timeout="auto" unmountOnExit>
-                <CardContent>
+                <CardContent sx={{p: 0}}> 
                     {
-                        props.foodCategories ? Object.entries(props.foodCategories).map(([category, foods]) => {
+                        (props.foodCategories && props.activeModal ) ? Object.entries(props.foodCategories).map(([category, foods]) => {
                             return (
                                 <div key={`${category}`}>
-                                    
-                                    
-                                    <div style={{ display: 'flex', backgroundColor: '#e5e5e5'}}>
-                                        <Typography variant="h6" component="h5" sx={{mr: 2}}>{category.toUpperCase()}</Typography>
+                                    <CategoryTitle>
+                                        <Typography variant="h6" component="h5" sx={{mr: 2}}>{capitalize(category)}</Typography>
                                         <Macros
                                             macros={props.macros}
                                             foods={foods}
                                             flex
                                         />
-                                    </div>
+                                    </CategoryTitle>
 
                                     <ItemFields
                                         items={foods}
@@ -122,7 +122,6 @@ const DayPanel = (props) => {
                                         showRemove
                                     />
 
-                                    {props.inEditMode && <p>InEditMode {props.inEditMode}</p>}
                                 </div>
                             )
                         }) : (

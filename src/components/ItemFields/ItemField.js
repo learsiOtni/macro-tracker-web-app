@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import { capitalize } from '../../shared/utility';
 
 const Div = styled('div')({
     display: 'flex',
@@ -56,7 +57,7 @@ const ItemField = (props) => {
 
             <Div sx={{ justifyContent: 'space-between', mb: 2, borderBottom: '1px solid grey' }}>
                 <Div>
-                    <Typography component="h4" variant="h6">{name}</Typography>
+                    <Typography component="h4" variant="h6">{capitalize(name)}</Typography>
                     <Typography variant="subtitle2" sx={{ ml: 2 }}>({unitValue.toFixed(0)}{unit})</Typography>
                 </Div>
 
@@ -111,7 +112,7 @@ const ItemField = (props) => {
                     {isActive ? 'SAVE' : 'EDIT'}
                 </Button> }
 
-                {props.showQtyControls && props.showRemove ? (
+                {props.showRemove ? (
                     <Button size="small" onClick={props.onRemoveItem.bind(this, foodId)}>Remove</Button>
                 ) : (
                     <Button size="small" onClick={(props.onAddItem.bind(this, props.foodKey))}>Add to {props.category}</Button>

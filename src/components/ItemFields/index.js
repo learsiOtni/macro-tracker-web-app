@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ItemField from './ItemField';
 import { Grid, Typography } from '@mui/material';
 
@@ -6,7 +6,11 @@ const ItemFields = React.memo((props) => {
 
     let itemEntries = [];
     if (props.items) itemEntries = Object.keys(props.items).slice(0, 10).sort();
-    console.log('here' + 'Item fields' + props.showQtyControls);
+    
+    useEffect( () => {
+        console.log('test');
+    }, props.showQtyControls);
+    
     return (
         <Grid container>
             {itemEntries.length > 0 ?

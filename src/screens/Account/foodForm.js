@@ -1,11 +1,13 @@
 export const foodForm = {
     name: {
-        id: 1,
+        index: 1,
+        id: 'name',
+        name: 'name',
         inputType: 'input',
         config: {
+            label: 'name',
             type: 'text',
             placeholder: 'Food Name',
-            name: 'name'
         },
         value: '',
         validation: {
@@ -16,9 +18,12 @@ export const foodForm = {
         isEditing: false,
     },
     unitValue: {
-        id: 2,
+        index: 2,
+        id: 'unitValue',
+        name: 'unitValue',
         inputType: 'input',
         config: {
+            label: 'unit value',
             type: 'text',
             placeholder: 'value'
         },
@@ -30,7 +35,9 @@ export const foodForm = {
         isEditing: false,
     },
     unit: {
-        id: 3,
+        index: 3,
+        id: 'unit',
+        name: 'unit',
         inputType: 'select',
         config: {
             options: [
@@ -43,16 +50,19 @@ export const foodForm = {
                 {value: 'ml', display: 'milliliters'},
                 {value: 'pack', display: 'pack'},
                 {value: 'can', display: 'can'},
-            ]
+            ],
         },
         value: 'g',
         validation: {},
         valid: true,
     },
     calories: {
-        id: 4,
+        index: 4,
+        id: 'calories',
+        name: 'calories',
         inputType: 'input',
         config: {
+            label: 'calories',
             type: 'text',
             placeholder: 'calories'
         },
@@ -64,9 +74,12 @@ export const foodForm = {
         isEditing: false,
     },
     protein: {
-        id: 5,
+        index: 5,
+        id: 'protein',
+        name: 'protein',
         inputType: 'input',
         config: {
+            label: 'protein',
             type: 'text',
             placeholder: 'protein'
         },
@@ -78,9 +91,12 @@ export const foodForm = {
         isEditing: false,
     },
     carbs: {
-        id: 6,
+        index: 6,
+        id: 'carbs',
+        name: 'carbs',
         inputType: 'input',
         config: {
+            label: 'carbs',
             type: 'text',
             placeholder: 'carbs'
         },
@@ -92,9 +108,12 @@ export const foodForm = {
         isEditing: false,
     },
     sugar: {
-        id: 7,
+        index: 7,
+        id: 'sugar',
+        name: 'sugar',
         inputType: 'input',
         config: {
+            label: 'sugar',
             type: 'text',
             placeholder: 'sugar'
         },
@@ -104,9 +123,12 @@ export const foodForm = {
         isEditing: false,
     },
     fat: {
-        id: 8,
+        index: 8,
+        id: 'fat',
+        name: 'fat',
         inputType: 'input',
         config: {
+            label: 'fat',
             type: 'text',
             placeholder: 'fat'
         },
@@ -118,9 +140,12 @@ export const foodForm = {
         isEditing: false,
     },
     saturates: {
-        id: 9,
+        index: 9,
+        id: 'saturates',
+        name: 'saturates',
         inputType: 'input',
         config: {
+            label: 'saturates',
             type: 'text',
             placeholder: 'saturates'
         },
@@ -130,9 +155,12 @@ export const foodForm = {
         isEditing: false,
     },
     unsaturated: {
-        id: 10,
+        index: 10,
+        id: 'unsaturated',
+        name: 'unsaturated',
         inputType: 'input',
         config: {
+            label: 'unsaturated',
             type: 'text',
             placeholder: 'unsaturated'
         },
@@ -142,9 +170,12 @@ export const foodForm = {
         isEditing: false,
     },
     fibre: {
-        id: 11,
+        index: 11,
+        id: 'fibre',
+        name: 'fibre',
         inputType: 'input',
         config: {
+            label: 'fibre',
             type: 'text',
             placeholder: 'fibre'
         },
@@ -154,9 +185,12 @@ export const foodForm = {
         isEditing: false,
     },
     salt: {
-        id: 12,
+        index: 12,
+        id: 'salt',
+        name: 'salt',
         inputType: 'input',
         config: {
+            label: 'salt',
             type: 'text',
             placeholder: 'salt'
         },
@@ -166,9 +200,12 @@ export const foodForm = {
         isEditing: false,
     },
     cholesterol: {
-        id: 13,
+        index: 13,
+        id: 'cholesterol',
+        name: 'cholesterol',
         inputType: 'input',
         config: {
+            label: 'cholesterol',
             type: 'text',
             placeholder: 'cholesterol'
         },
@@ -178,9 +215,12 @@ export const foodForm = {
         isEditing: false,
     },
     potassium: {
-        id: 14,
+        index: 14,
+        id: 'potassium',
+        name: 'potassium',
         inputType: 'input',
         config: {
+            label: 'potassium',
             type: 'text',
             placeholder: 'potassium'
         },

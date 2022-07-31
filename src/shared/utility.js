@@ -150,4 +150,7 @@ export const getTotalMacrosCategory = (foods, macros) => {
     return totalMacros;
 }
 
+export const capitalize = (word) => {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
 

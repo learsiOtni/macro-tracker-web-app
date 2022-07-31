@@ -78,8 +78,6 @@ class Overview extends Component {
                 updatedData = {},
                 currentCategories = this.props.foodCategories;
             
-            console.log(foodCategories);
-            console.log(currentCategories);
  /***********/ // IF in Edit Mode, but no changes has been made, dont put to DB 
             // 
             // Psuedo
@@ -140,13 +138,11 @@ class Overview extends Component {
     render() {
         return (
             <Box component="main" sx={{ marginLeft: '250px', p: 4, mt: 8 }}>
-                
-                <div style={{ marginBottom: '20px ', display: 'flex', justifyContent: 'flex-end' }}>
-                    <MacrosModal
-                        macros={this.props.macros}
-                        onSubmit={this.onSubmitMacros}
-                    />
-                </div>
+
+                <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography component="h6" variant="h4">Weekly Overview</Typography>
+                    <MacrosModal macros={this.props.macros} onSubmit={this.onSubmitMacros}/>
+                </Box>
 
                 {this.props.foodWeekLists && <DayPanels
                     week={this.state.week}
@@ -158,12 +154,6 @@ class Overview extends Component {
                     inEditMode={this.state.inEditMode}
                     onRemoveItem={this.onRemoveItem}
                 />}
-
-                <p>2) be able to see the difference againts the goal</p>
-                <p>3) when a day is clicked, it will show all 4 meals [DONE]</p>
-                <p>4) would be able to adjust qty of the food Items [DONE]</p>
-
-
             </Box>
         );
     };

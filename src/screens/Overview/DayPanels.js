@@ -13,9 +13,28 @@ const DayPanels = (props) => {
         });
     }
 
-    let activeDate;
     return (
         <Grid container spacing={3}>
+            {/** Render Active Date last for viewing */}
+            <div ref={activeDayPanel} />
+
+
+            {
+                props.activeModal && <Grid item xs={12}>
+                    <DayPanel
+                        key={props.activeModal}
+                        date={props.activeModal}
+                        foods={props.foodWeekLists[props.activeModal]}
+                        activeModal={true}
+                        openModal={props.openModal.bind(this, props.activeModal)}
+                        qtyInputRef={props.qtyInputRef}
+                        editMode={props.editMode}
+                        inEditMode={props.inEditMode}
+                        onRemoveItem={props.onRemoveItem}
+                    />
+                </Grid>
+            }
+
             {
                 props.week.map( date => {
                     if (date !== props.activeModal) return <Grid item xs={12} md={6} lg={4} key={date}>
@@ -30,27 +49,8 @@ const DayPanels = (props) => {
                             onRemoveItem={props.onRemoveItem}
                         />
                     </Grid>
-                    else activeDate = date
                 })
             }
-
-            {/** Render Active Date last for viewing */}
-            <div ref={activeDayPanel} />
-
-            {activeDate && <Grid item xs={12} key={activeDate}>
-                <DayPanel
-                    key={activeDate}
-                    date={activeDate}
-                    foods={props.foodWeekLists[activeDate]}
-                    activeModal={true}
-                    openModal={props.openModal.bind(this, activeDate)}
-                    qtyInputRef={props.qtyInputRef}
-                    editMode={props.editMode}
-                    inEditMode={props.inEditMode}
-                    onRemoveItem={props.onRemoveItem}
-                />
-            </Grid>}
-            
         </Grid>
     )
 }

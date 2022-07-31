@@ -4,6 +4,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 import { Dropdown, Macros } from '../../components';
+import { capitalize } from '../../shared/utility';
 
 const Button = styled(MuiButton, {})({
 
@@ -11,10 +12,14 @@ const Button = styled(MuiButton, {})({
 
 const CategoryHead = styled('div', {
     shouldFordwardProp: props => props !== "active"
-})(({ active }) => ({
+})(({ theme, active }) => ({
+    opacity: active && '0.8',
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: active && '#ffe'
+    backgroundColor: theme.palette.primary.main,
+    '&:hover': {
+        opacity: '0.8'
+    }
 }))
 
 const CategoryBody = styled('div', {
@@ -62,8 +67,8 @@ const Categories = (props) => {
                         <Grid item xs={12} md={6} lg={3} key={category}>
 
                             <CategoryHead active={isActiveOption}>
-                                <Button onClick={props.clicked.bind(this, category)} sx={{ flex: 1 }}>{category.toUpperCase()} - Items: {optionsForDropdown.length}</Button>
-                                <Button disabled={!isActiveOption} onClick={props.dropdownClicked}>{label}</Button>
+                                <Button onClick={props.clicked.bind(this, category)} sx={{ flex: 1, color: "white"}}>{capitalize(category)} - Items: {optionsForDropdown.length}</Button>
+                                <Button disabled={!isActiveOption} sx={{color: "white"}} onClick={props.dropdownClicked}>{label}</Button>
                             </CategoryHead>
 
                             <CategoryBody show={props.showDropdown && isActiveOption}>
