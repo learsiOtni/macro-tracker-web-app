@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Grid, Button as MuiButton, styled, Typography } from '@mui/material';
+import { Box, Grid, Button as MuiButton, styled, Typography, Card as MuiCard, Tooltip, Divider } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Dropdown, Macros } from '../../components';
 import { capitalize } from '../../shared/utility';
@@ -16,21 +17,22 @@ const CategoryHead = styled('div', {
     opacity: active && '0.8',
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: theme.palette.primary.main,
+    borderRadius: '10px',
     '&:hover': {
         opacity: '0.8'
-    }
+    },
+     
 }))
 
-const CategoryBody = styled('div', {
+const CategoryBody = styled(MuiCard, {
     shouldForwardProp: props => props !== "show"
-
 })(({ show }) => ({
     display: show ? 'block' : 'none',
     position: show && 'absolute',
     backgroundColor: '#fff',
-    padding: '10px',
-    width: '400px',
+    zIndex: 50,
+    padding: '20px',
+    width: 'inherit'
 }))
 
 
@@ -38,7 +40,7 @@ const categoriesData = ['breakfast', 'snacks', 'lunch', 'dinner'];
 
 const Categories = (props) => {
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', width: '100%'}}>
 
             <Grid container>
                 {categoriesData.map(category => {
@@ -64,28 +66,33 @@ const Categories = (props) => {
                     );
 
                     return (
-                        <Grid item xs={12} md={6} lg={3} key={category}>
+                        <Grid item xs={12} key={category} sx={{m:1, width: '100%', position: 'relative'}}>
 
                             <CategoryHead active={isActiveOption}>
-                                <Button onClick={props.clicked.bind(this, category)} sx={{ flex: 1, color: "white"}}>{capitalize(category)} - Items: {optionsForDropdown.length}</Button>
-                                <Button disabled={!isActiveOption} sx={{color: "white"}} onClick={props.dropdownClicked}>{label}</Button>
+                                <Button variant="text" onClick={props.clicked.bind(this, category)} sx={{ flex: 1}}>{capitalize(category)} - Items: {optionsForDropdown.length}</Button>
+                                <Button variant="text" disabled={!isActiveOption} onClick={props.dropdownClicked}>{label}</Button>
                             </CategoryHead>
 
                             <CategoryBody show={props.showDropdown && isActiveOption}>
-
-                                <div className="none">
+                                <div className="none" style={{ marginBottom: '20px'}}>
                                     <Macros foods={foods} macros={props.macros} />
                                 </div>
 
+                                <Divider sx={{mb: 2}}/>
+
                                 {optionsForDropdown.length > 0 ? optionsForDropdown.map(option => (
-                                    <div key={option.id} style={{ display: 'flex' }}>
+                                    <div key={option.id} style={{ display: 'flex', justifyContent: 'space-between'}}>
                                         <Typography variant="body1">{option.name} - ({option.qty})</Typography>
-                                        <Button size="small" onClick={props.onRemoveItem.bind(this, option.id)}>Remove</Button>
+                                        <Tooltip title="Delete item" placement="left">
+                                            <Button size="small" color="secondary" onClick={props.onRemoveItem.bind(this, option.id)}>
+                                                <DeleteIcon />
+                                            </Button>
+
+                                        </Tooltip>
                                     </div>
                                 )) :
                                     <Typography variant="subtitle2">It's empty, start adding your food now.</Typography>}
                             </CategoryBody>
-
 
 
 

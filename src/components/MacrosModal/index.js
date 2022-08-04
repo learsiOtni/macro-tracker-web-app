@@ -50,7 +50,7 @@ class MacrosModal extends Component {
     render() {
         return (
             <React.Fragment>
-                <Button variant="contained" onClick={this.modalToggled} startIcon={<ChangeCircleIcon />}>
+                <Button color={this.props.color} variant="contained" onClick={this.modalToggled} startIcon={<ChangeCircleIcon />}>
                     {this.props.macros ? `CHANGE MACROS GOALS` : `ADD MACROS GOALS` }
                 </Button>
 

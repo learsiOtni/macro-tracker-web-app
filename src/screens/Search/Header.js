@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material'
-import { Macros, MacrosModal, PieChart } from '../../components';
+import { Typography, Box, Paper } from '@mui/material'
+import { Macros, MacrosModal, PieChart} from '../../components';
 
 
 const Header = (props) => {
@@ -30,13 +30,7 @@ const Header = (props) => {
     }
 
     return (
-        <Box 
-            sx={{ 
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }}
-        >
+        <>
             <Typography variant="h6">Macros needed:</Typography>
             <Typography variant="subtitle2">{calories} calories</Typography>
 
@@ -45,19 +39,19 @@ const Header = (props) => {
                 data={pieChartData}
             />
 
-            <Typography variant="h6" sx={{ mt: 2}} >Current:</Typography>
-            <Macros
-                macros={props.macros}
-                foods={props.foodLists}
-                showTotal
-                showCalories
-            />
+            <Typography variant="h6" sx={{ mt: 2 }} >Total current macros:</Typography>
 
+            <Box sx={{ mb: 2 }}>
+                <Macros
+                    macros={props.macros}
+                    foods={props.foodLists}
+                    showTotal
+                    showCalories
+                />
+            </Box>
 
-            <MacrosModal macros={props.macros} onSubmit={props.onSubmitMacros} />
-
-            <p>Choose a category and start adding!</p>
-        </Box>
+            <MacrosModal macros={props.macros} onSubmit={props.onSubmitMacros} color="primary" />
+        </>
     )
 }
 

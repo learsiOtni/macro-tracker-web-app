@@ -1,16 +1,17 @@
 import React, {useEffect} from 'react';
 import { styled } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { TextField as MuiTextField } from '@mui/material';
 
 const Search = styled('div')({
     flex: 1,
     display: 'flex',
+    alignItems: 'center',
+    height: '40px',
 })
 
-const Input = styled('input')({
+const TextField = styled(MuiTextField)({
     width: '100%',
-    height: '100%',
-
 })
 
 const SearchField = (props) => {
@@ -42,12 +43,12 @@ const SearchField = (props) => {
         }
     }, [searchWord]);
 
-    const searchPlaceholder = <SearchIcon/>
     return (
         <Search>
-            <SearchIcon/>
-            <Input
-                placeholder="Search"
+            <TextField 
+                id="search"
+                label="Search"
+                variant="filled"
                 value={props.searchWord}
                 onChange={props.onChange}
             />

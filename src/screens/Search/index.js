@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import axios from '../../axios/axios-foods';
 import { connect } from 'react-redux';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Grid, Typography, Paper, Divider } from '@mui/material';
 
 import { initFoods, updateFoods, updateMacros } from '../../store/actions';
 import { ItemFields, SearchField, DatePicker } from '../../components'
 
-import { formatDate } from '../../shared/utility';
+import { formatDate, capitalize } from '../../shared/utility';
 import Header from './Header.js';
 import Categories from './Categories.js';
+
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ClearIcon from '@mui/icons-material/Clear';
 
 class Search extends Component {
 
@@ -23,6 +26,7 @@ class Search extends Component {
             search: '',
             filteredFoods: {},
             showModal: false,
+            showFavs: false,
         }
     };
 
@@ -133,6 +137,23 @@ class Search extends Component {
         this.props.updateMacros(this.props.userId, this.props.token, newEntry);
     };
 
+    showFavsHandler = () => {
+        let list;
+        
+        if (!this.state.showFavs) {
+            Object.entries(this.props.favs).forEach(([foodId, isFav]) => {
+                if (isFav) {
+                    list = { ...list, [foodId]: this.props.foodBaseValues[foodId] }
+                }
+            })
+        } else {
+            list = this.props.foodBaseValues;
+        }
+
+        this.props.updateFoods(list, this.state.activeCategory);
+        this.setState({ ...this.state, filteredFoods: list, showFavs: !this.state.showFavs });
+    }
+
     render() {
         let foods = {};
         if (this.props.foodCategories) foods = this.props.foodCategories[this.state.activeCategory];
@@ -140,43 +161,98 @@ class Search extends Component {
         return (
             <Box component="main" sx={{ marginLeft: '250px', p: 4, mt: 8 }}>
 
-                <Header
-                    foodLists={this.props.foodLists}
-                    macros={this.props.macros}
-                    onSubmitMacros={this.macrosSubmitted}
-                />
+                <Grid container spacing={1}>
 
-                <div style={{ display: "flex", alignItems: "center"}}>
-
-                    <DatePicker
-                        showDate={this.state.showDate}
-                        onChange={this.dateSelected}
-                        onToggle={this.dateToggled}
-                        onNextPrev={this.dateNextPrev}
-                    />
+                    <Grid item xs={12} md={6} >
+                        <Paper 
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                p: 3,
+                            }}
+                            elevation={1}
+                        >
+                            <Header
+                                foodLists={this.props.foodLists}
+                                macros={this.props.macros}
+                                onSubmitMacros={this.macrosSubmitted}
+                            />
+                        </Paper>
+                    </Grid>
                     
-                    <div style={{ display: "flex", flex: 1 }}>
-                        <SearchField
-                            searchWord={this.state.search}
-                            data={this.props.foodBaseValues}
-                            returnList={this.searchHandler}
-                            onChange={this.searchChanged}
-                        />
+                    <Grid item xs={12} md={6} container>
+                        <Paper 
+                            sx={{ 
+                                alignItems: 'center', 
+                                justifyContent: 'center', 
+                                p: 4,
+                            }}
+                            elevation={0}
+                        >
+                            <Grid item xs={12}>
+                                <Typography component="p" variant="body2" gutterBottom>Select a date:</Typography>
+                                <DatePicker
+                                    showDate={this.state.showDate}
+                                    onChange={this.dateSelected}
+                                    onToggle={this.dateToggled}
+                                    onNextPrev={this.dateNextPrev}
+                                />
+                            </Grid>
 
-                        <Button variant="contained" size="small">Show Favorites</Button>
-                    </div>
-                </div>
+                            <Grid item xs={12} >
+                                <Paper 
+                                    sx={{ 
+                                        mt: 16, 
+                                        zIndex: 100, 
+                                        backgroundColor: '#fff',
+                                    }}
+                                    elevation= {0}
+                                >
+                                    <Typography component="p" variant="body" gutterBottom>Choose a category and start adding:</Typography>
+                                    <Categories
+                                        categories={this.props.foodLists}
+                                        clicked={this.categoriesHandler}
+                                        activeCategory={this.state.activeCategory}
+                                        showDropdown={this.state.showDropdown}
+                                        dropdownClicked={this.categoriesToggle}
+                                        onRemoveItem={this.onRemoveItem}
+                                        macros={this.props.macros}
+                                    />
+                                </Paper>
+                            </Grid>
+
+                            <Grid item xs={12} sx={{mt: 4}}>
+                                <SearchField
+                                    searchWord={this.state.search}
+                                    data={this.props.foodBaseValues}
+                                    returnList={this.searchHandler}
+                                    onChange={this.searchChanged}
+                                />
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                </Grid>
+
+                <Divider light />
+
+                <Box sx={{ display: 'flex', mt: 2, alignItems: 'center', justifyContent: 'space-between'}}>
+                    <Typography variant="h5" sx={{ mt: 2, display: 'flex', alignItems: 'center'}}>Current Category: 
+                        <Typography color="secondary" variant="h4" sx={{ml: 2}}>{capitalize(this.state.activeCategory)}</Typography>
+                    </Typography>
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        color="secondary"
+                        startIcon={
+                            this.state.showFavs ? <ClearIcon /> : <FavoriteIcon /> 
+                        }
+                        onClick={this.showFavsHandler}
+                    >
+                        { this.state.showFavs ? 'Clear Favorites' : 'Favorites' }
+                    </Button>
+                </Box>
                 
-                <Categories
-                    categories={this.props.foodLists}
-                    clicked={this.categoriesHandler}  
-                    activeCategory={this.state.activeCategory}
-                    showDropdown={this.state.showDropdown}
-                    dropdownClicked={this.categoriesToggle}
-                    onRemoveItem={this.onRemoveItem}
-                    macros={this.props.macros}
-                />
-
                 <ItemFields
                     items={foods}
                     inputRef={this.qtyInputRef}

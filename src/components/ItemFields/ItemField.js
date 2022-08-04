@@ -115,7 +115,7 @@ const ItemField = (props) => {
                 {props.showRemove ? (
                     <Button size="small" onClick={props.onRemoveItem.bind(this, foodId)}>Remove</Button>
                 ) : (
-                    <Button size="small" onClick={(props.onAddItem.bind(this, props.foodKey))}>Add to {props.category}</Button>
+                    <Button size="small" onClick={(props.onAddItem.bind(this, props.foodKey))}>Add</Button>
                 )}
             </Div>
 
