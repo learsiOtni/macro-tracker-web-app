@@ -51,7 +51,7 @@ const ItemField = (props) => {
     
 
     const { name, unitValue, unit, calories, protein, carbs, fat, qty } = props.item;
-    console.log(name, props.showQtyControls, props.showRemove)
+    console.log('ITEMFIELD', props.showQtyControls, props.showRemove)
     return (
         <Card variant="outlined" sx={{ p: 1}}>
 
@@ -96,27 +96,31 @@ const ItemField = (props) => {
                 </div>}
 
 
-                <Typography component="span" variant="body2" sx={{ml: 2, mr: 1}}>QTY:</Typography>
-                <Input
-                    ref={inputRef}
-                    disabled={!isActive}
-                    onChange={inputHandler}
-                    value={qty}
-                />
+                <div>
+                    <Typography component="span" variant="body2" sx={{ ml: 2, mr: 1 }}>QTY:</Typography>
+                    <Input
+                        ref={inputRef}
+                        disabled={!isActive}
+                        onChange={inputHandler}
+                        value={qty}
+                    />
+                </div>
+                
+                <div>
+                    {props.showQtyControls && <Button
+                        onClick={props.editQty.bind(this, foodId)}
+                        size="small"
+                    >
+                        {isActive ? <SaveIcon sx={{ mr: 0.5, fontSize: '18px' }} /> : <EditIcon sx={{ mr: 0.5, fontSize: '18px' }} />}
+                        {isActive ? 'SAVE' : 'EDIT'}
+                    </Button>}
 
-                { props.showQtyControls && <Button
-                    onClick={props.editQty.bind(this, foodId)}
-                    size="small"
-                >
-                    {isActive ? <SaveIcon sx={{mr: 0.5, fontSize: '18px'}}/> : <EditIcon sx={{mr: 0.5, fontSize: '18px'}}/> }
-                    {isActive ? 'SAVE' : 'EDIT'}
-                </Button> }
-
-                {props.showRemove ? (
-                    <Button size="small" onClick={props.onRemoveItem.bind(this, foodId)}>Remove</Button>
-                ) : (
-                    <Button size="small" onClick={(props.onAddItem.bind(this, props.foodKey))}>Add</Button>
-                )}
+                    {props.showRemove ? (
+                        <Button size="small" onClick={props.onRemoveItem.bind(this, foodId)}>Remove</Button>
+                    ) : (
+                        <Button size="small" onClick={(props.onAddItem.bind(this, props.foodKey))}>Add</Button>
+                    )}
+                </div>
             </Div>
 
         </Card>

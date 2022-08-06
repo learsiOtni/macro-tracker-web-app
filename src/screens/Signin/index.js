@@ -43,10 +43,10 @@ const Signin = (props) => {
             >
                 <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
                     <AssignmentTurnedInIcon />
-                </Avatar>
-
-                <Typography component="h1" variant="h3" sx={{ mb: 2}}>SIGN IN</Typography>
-                <Typography variant="subtitle" sx={{ mb: 2}}>Hello, welcome to Macro Tracker, Sign in and start tracking your macros!</Typography>
+                </Avatar>  
+                
+                <Typography component="h1" variant="h4" color="primary" sx={{mb: 2}}>MACRO TRACKER</Typography>
+                <Typography variant="subtitle" sx={{ mb: 1}}>Hello, welcome to Macro Tracker, Sign in and start tracking your macros!</Typography>
 
                 <Form
                     formState={signinForm}
@@ -56,25 +56,27 @@ const Signin = (props) => {
                     loginFailed={props.error}
                 />
 
-                <Grid container>
-                    <Grid item xs>
-                        <Link href="#" variant="body2">
-                            Forgot password?
+                <Grid container direction="column" sx={{mt: -1}}>
+                    <Grid item xs={12} sx={{alignSelf: 'flex-end'}}>
+                        <Link sx={{ cursor: 'pointer' }} onClick={handleSignup} variant="body">
+                            Don't have an account? Sign Up
                         </Link>
                     </Grid>
 
-                    <Grid item>
-                        <Link sx={{ cursor: 'pointer' }} onClick={handleSignup} variant="body2">
-                            {"Don't have an account? Sign Up"}
-                        </Link>
+                    <Grid item container direction="row" justifyContent="space-between" xs={12} sx={{ mt: 4 }}>
+
+                        <Grid item>
+                            <Link href="#" variant="body2" underline="hover" color="text.primary">Forgot password?</Link>
+                        </Grid>
+
+                        <Grid item>
+                            <Link href="#" variant="body2" underline="hover" color="text.primary">Terms and Conditions</Link>
+                        </Grid>
+
                     </Grid>
                 </Grid>
 
-                <Link sx={{ mt: 4}} href="#" variant="body" underline="hover" color="black">
-                    Terms and Conditions
-                </Link>
             </Box>
-
         </Container>
     )
 

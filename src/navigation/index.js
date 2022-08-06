@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -48,7 +48,7 @@ class RootNavigator extends Component {
                         <Routes>
                             <Route path="/signup" element={<Signup/>} />
                             <Route path="/signin" element={<Signin/>} />
-                            {/*<Route path="*" element={<Navigate to="/signin" replace />} />*/}
+                            <Route path="*" element={<Navigate to="/signin" replace />} />
                         </Routes>
                     }
 

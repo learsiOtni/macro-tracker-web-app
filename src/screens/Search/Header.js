@@ -39,7 +39,7 @@ const Header = (props) => {
                 data={pieChartData}
             />
 
-            <Typography variant="h6" sx={{ mt: 2 }} >Total current macros:</Typography>
+            <Typography variant="body" sx={{ mt: 2 }} gutterBottom>Total current macros:</Typography>
 
             <Box sx={{ mb: 2 }}>
                 <Macros
@@ -50,7 +50,11 @@ const Header = (props) => {
                 />
             </Box>
 
-            <MacrosModal macros={props.macros} onSubmit={props.onSubmitMacros} color="primary" />
+            <MacrosModal 
+                macros={props.macros} 
+                onSubmit={props.onSubmitMacros} 
+                variant="contained"
+                color="primary"/>
         </>
     )
 }

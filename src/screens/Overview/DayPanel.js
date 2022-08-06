@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { ItemFields, Macros } from '../../components';
 import * as actions from '../../store/actions';
-import { styled, Typography, Button, Card, Avatar, CardHeader, CardContent, CardActions, Collapse, IconButton } from '@mui/material';
+import { styled, Typography, Button, Card, Avatar, CardHeader, CardContent, CardActions, Collapse, IconButton, Box } from '@mui/material';
 import { red } from '@mui/material/colors';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import EditIcon from '@mui/icons-material/Edit';
@@ -52,6 +52,7 @@ const DayPanel = (props) => {
             fat += food.fat;
         });
     });*/
+
     return (
         <Card variant="outlined">
             
@@ -102,7 +103,7 @@ const DayPanel = (props) => {
                     {
                         (props.foodCategories && props.activeModal ) ? Object.entries(props.foodCategories).map(([category, foods]) => {
                             return (
-                                <div key={`${category}`}>
+                                <Box key={`${category}`} sx={{ mb: 3}}>
                                     <CategoryTitle>
                                         <Typography variant="h6" component="h5" sx={{mr: 2}}>{capitalize(category)}</Typography>
                                         <Macros
@@ -122,7 +123,7 @@ const DayPanel = (props) => {
                                         showRemove
                                     />
 
-                                </div>
+                                </Box>
                             )
                         }) : (
                             <Typography variant="subtitle2">It is empty. Start adding food now.</Typography>

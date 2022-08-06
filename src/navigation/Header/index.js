@@ -25,7 +25,7 @@ const Header = (props) => {
             <header className="header">
                 <AppBar>
                     <Toolbar color="secondary">
-                        <Link sx={{ cursor: 'pointer' }}> {/** NavLink */}
+                        <Link sx={{ cursor: 'pointer' }} href="/"> {/** NavLink */}
                             <Typography variant="h6" color="white">MACRO TRACKER</Typography>
                         </Link>
 

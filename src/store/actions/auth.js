@@ -10,7 +10,6 @@ export const authFailed = (error) => ({ type: actions.AUTH_FAILED, error});
 export const authStart = () => ({type: actions.AUTH_START});
 
 export const authLogout = () => {
-    console.log('authLogged out');
     localStorage.removeItem('expDate');
     localStorage.removeItem('userId');
     localStorage.removeItem('token');

@@ -58,17 +58,26 @@ const Categories = (props) => {
                     const foods = props.categories[category];
 
                     /* Alter array to suit dropdown options*/
-                    if (foods) optionsForDropdown = Object.entries(foods).map(
+                    /*if (foods) optionsForDropdown = Object.entries(foods).map(
                         ([foodId, foodInfo]) => ({
                             ...optionsForDropdown,
                             id: foodId, name: foodInfo.name, qty: foodInfo.qty
                         })
+                    );*/
+
+                    if (foods) Object.entries(foods).forEach( 
+                        ([foodId, foodInfo]) => (
+                            optionsForDropdown.push({
+                            id: foodId,
+                            name: foodInfo.name,
+                            qty: foodInfo.qty 
+                        }))
                     );
 
                     return (
                         <Grid item xs={12} key={category} sx={{m:1, width: '100%', position: 'relative'}}>
 
-                            <CategoryHead active={isActiveOption}>
+                            <CategoryHead active={isActiveOption.toString()}>
                                 <Button variant="text" onClick={props.clicked.bind(this, category)} sx={{ flex: 1}}>{capitalize(category)} - Items: {optionsForDropdown.length}</Button>
                                 <Button variant="text" disabled={!isActiveOption} onClick={props.dropdownClicked}>{label}</Button>
                             </CategoryHead>
@@ -80,11 +89,11 @@ const Categories = (props) => {
 
                                 <Divider sx={{mb: 2}}/>
 
-                                {optionsForDropdown.length > 0 ? optionsForDropdown.map(option => (
-                                    <div key={option.id} style={{ display: 'flex', justifyContent: 'space-between'}}>
+                                {optionsForDropdown.length > 0 ? optionsForDropdown.map( (option, index) => (
+                                    <div key={`${option.id}${index}`} style={{ display: 'flex', justifyContent: 'space-between'}}>
                                         <Typography variant="body1">{option.name} - ({option.qty})</Typography>
                                         <Tooltip title="Delete item" placement="left">
-                                            <Button size="small" color="secondary" onClick={props.onRemoveItem.bind(this, option.id)}>
+                                            <Button size="small" onClick={props.onRemoveItem.bind(this, option.id)}>
                                                 <DeleteIcon />
                                             </Button>
 

@@ -30,7 +30,7 @@ const Signup = (props) => {
                 mt: 20,
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
 
                 <Avatar sx={{bgcolor: deepPurple[500] }}>MT</Avatar>
@@ -46,7 +46,7 @@ const Signup = (props) => {
                     loginFailed={props.error}
                 />
 
-                <Link sx={{ cursor: 'pointer' }} onClick={handleSignin}>Already have an account? Sign in</Link>
+                <Link sx={{ cursor: 'pointer'}} onClick={handleSignin}>Already have an account? Sign in</Link>
             </Box>
         </Container>
     )

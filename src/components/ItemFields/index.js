@@ -6,17 +6,13 @@ const ItemFields = React.memo((props) => {
 
     let itemEntries = [];
     if (props.items) itemEntries = Object.keys(props.items).slice(0, 10).sort();
-    
-    useEffect( () => {
-        console.log('test');
-    }, props.showQtyControls);
-    
+
     return (
         <Grid container>
             {itemEntries.length > 0 ?
                 itemEntries.map(foodKey => {
                     
-                    return <Grid item xs={12} md={6} lg={4} sx={{p: 3}}>
+                    return <Grid item xs={12} md={6} lg={4} sx={{p: 3}} key={foodKey}>
                         <ItemField
                             key={`${props.category}-${foodKey}`}
                             item={props.items[foodKey]}
@@ -35,8 +31,7 @@ const ItemFields = React.memo((props) => {
         </Grid>
     )
 }, (prevProps, nextProps) => {
-    //console.log(nextProps);
-    return (prevProps.items === nextProps.items);
+    return (prevProps.items === nextProps.items && prevProps.showQtyControls === nextProps.showQtyControls);
 });
 
 export default ItemFields;

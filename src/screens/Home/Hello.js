@@ -6,7 +6,7 @@ const Hello = () => {
   return (
       <React.Fragment>
           <Typography variant="subtitle" gutterBottom>Hi Daniel,</Typography>
-          <Typography variant="h4" gutterBottom>Your Goal for Today</Typography>
+          <Typography variant="h4" gutterBottom>Welcome to MT</Typography>
           <Avatar alt="profile image" src={AvatarImg} sx={{width: 100, height: 100, mt: 2}} />
       </React.Fragment>
   )

@@ -47,7 +47,7 @@ class Home extends Component {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Paper sx={{ p: 3 }}>
+                        <Paper elevation={3}>
                             <MealPlans />
                         </Paper>
                     </Grid>

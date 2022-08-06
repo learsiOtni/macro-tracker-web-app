@@ -43,15 +43,19 @@ class Form extends Component {
     }
 
     inputBlurred = (name) => {
-
         let value = this.state.form[name].value;
         // this clears the [name]: value, since when a string is typed, 
         // the program will clear it but the state will still store the first
         // digit entered into the state,
-        if (this.props.inputRef && 
-            (this.props.inputRef.current && !this.props.inputRef.current.value)) value = '';
+        //if (this.props.inputRef && this.props.inputRef.current && !this.props.inputRef.current.value) {console.log("theres no current value of active Inpuit" + this.props.inputRef.current.value); value = ''};
 
-        if (!value && this.state.oldValue) value = this.state.oldValue;
+        //if (!value && this.state.oldValue) value = this.state.oldValue;
+
+
+        if(this.state.oldValue && !value || value > 10000) { //can check if numbers are higher than normal
+            value = this.state.oldValue;
+        }
+
         
         this.setState({
             ...this.state,
@@ -145,7 +149,7 @@ class Form extends Component {
                 
                 {loginFailed}
 
-                <Button type="submit" variant="contained" fullWidth sx={{ mt: 3, mb: 3}}>{this.props.buttonTitle}</Button>
+                <Button type="submit" variant="contained" fullWidth sx={{ mt: 3, mb: 3, p: 1.5}}>{this.props.buttonTitle}</Button>
             </Box>
         );
     };

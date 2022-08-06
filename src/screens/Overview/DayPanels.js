@@ -17,8 +17,7 @@ const DayPanels = (props) => {
         <Grid container spacing={3}>
             {/** Render Active Date last for viewing */}
             <div ref={activeDayPanel} />
-
-
+            
             {
                 props.activeModal && <Grid item xs={12}>
                     <DayPanel

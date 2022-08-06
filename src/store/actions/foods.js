@@ -68,7 +68,6 @@ export const initFoodCategories = (userId, token, date) => {
     return dispatch => {
         axios.get(`/users/${userId}/dates/${date}.json?auth=${token}`)
             .then(response => {
-                console.log(response);
                 dispatch(setFoodCategories(response.data, date));
             })
             .catch(error => {

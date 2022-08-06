@@ -5,7 +5,7 @@ export const macrosForm = {
         inputType: 'input',
         config: {
             label: "Calories",
-            type: 'text',
+            type: 'number',
             placeholder: 'Calories',
             autoFocus: true,
         },
@@ -22,7 +22,7 @@ export const macrosForm = {
         inputType: 'input',
         config: {
             label: "Protein",
-            type: 'text',
+            type: 'number',
             placeholder: 'Protein',
         },
         value: '',
@@ -38,7 +38,7 @@ export const macrosForm = {
         inputType: 'input',
         config: {
             label: "Carbs",
-            type: 'text',
+            type: 'number',
             placeholder: 'Carbs',
         },
         value: '',
@@ -54,7 +54,7 @@ export const macrosForm = {
         inputType: 'input',
         config: {
             label: "Fat",
-            type: 'text',
+            type: 'number',
             placeholder: 'Fat',
         },
         value: '',

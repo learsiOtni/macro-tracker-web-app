@@ -42,27 +42,37 @@ class MacrosModal extends Component {
     };
 
     outsideClicked = (event) => {
+        
         if (this.outsideRef && this.outsideRef.current === event.target) {
+            console.log('outside modal clicked');
             this.setState({ ...this.state, showModal: false})
         }
-    }
+    };
 
     render() {
+
+        let viewDisplay = <Button color={this.props.color} variant={this.props.variant} startIcon={< ChangeCircleIcon />} >
+            {this.props.macros ? `CHANGE MACROS GOALS` : `ADD MACROS GOALS`}
+        </Button >
+
+        if(this.props.children) viewDisplay = this.props.children;
+
         return (
             <React.Fragment>
-                <Button color={this.props.color} variant="contained" onClick={this.modalToggled} startIcon={<ChangeCircleIcon />}>
-                    {this.props.macros ? `CHANGE MACROS GOALS` : `ADD MACROS GOALS` }
-                </Button>
+
+                <div onClick={this.modalToggled}>
+                    {viewDisplay}
+                </div>
 
                 {this.state.showModal && <Modal
                     showModal={this.state.showModal}
-                    title='My Macro'
+                    title='My Macros'
                     onClose={this.modalToggled}
                     outsideRef={this.outsideRef}
                     onOutsideClick={this.outsideClicked}
                 >
                     <Container>
-                        <Typography variant="h6" sx={{ pt: 2}}>Go on a macros calculator, and enter the details here to start tracking your macros.</Typography>
+                        <Typography variant="body1" sx={{ my: 2}} gutterBottom>Go on a macros calculator, and enter the details here to start tracking your macros.</Typography>
 
                         <Form
                             formState={macrosForm}

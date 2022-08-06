@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 //import Link from './Link.js';
 
@@ -37,28 +38,43 @@ const Links = (props) => {
         <List 
             component="nav"
             sx={{
-
+                mt: 2,
             }}
         >
+            <ListItemButton component="a" href="/">
+                <ListItemIcon>
+                    <DashboardIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+            </ListItemButton>
+
             <ListItemButton component="a" href="/overview">
-                <ListItemIcon><CalendarViewWeekIcon/></ListItemIcon>
+                <ListItemIcon>
+                    <CalendarViewWeekIcon/>
+                </ListItemIcon>
                 <ListItemText primary="Overview" />
             </ListItemButton>
 
             <ListItemButton component="a" href="/search">
-                <ListItemIcon><SearchIcon/></ListItemIcon>
+                <ListItemIcon>
+                    <SearchIcon/>
+                </ListItemIcon>
                 <ListItemText primary="Search" />
             </ListItemButton>
 
             <ListItemButton component="a" href="/account">
-                <ListItemIcon><AccountBoxIcon/></ListItemIcon>
+                <ListItemIcon>
+                    <AccountBoxIcon/>
+                </ListItemIcon>
                 <ListItemText primary="Account" />
             </ListItemButton>
 
             <Divider sx={{mt: 10, mb: 2}}/>
 
             <ListItemButton component="a" href="/settings">
-                <ListItemIcon><SettingsIcon/></ListItemIcon>
+                <ListItemIcon>
+                    <SettingsIcon/>
+                </ListItemIcon>
                 <ListItemText primary="Settings" />
             </ListItemButton>
 

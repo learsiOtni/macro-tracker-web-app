@@ -68,10 +68,11 @@ class Search extends Component {
             ...this.state,
             activeCategory: category,
             showDropdown: false,
+            showDate: false
         });
     };
 
-    categoriesToggle = () => this.setState({ ...this.state, showDropdown: !this.state.showDropdown });
+    categoriesToggle = () => this.setState({ ...this.state, showDropdown: !this.state.showDropdown, showDate: false });
 
     /* Database */
     onAddItem = (foodId) => {
@@ -135,6 +136,7 @@ class Search extends Component {
     // Dashboard
     macrosSubmitted = (newEntry) => {
         this.props.updateMacros(this.props.userId, this.props.token, newEntry);
+        this.setState({ ...this.state, showDate: false});
     };
 
     showFavsHandler = () => {
@@ -151,7 +153,7 @@ class Search extends Component {
         }
 
         this.props.updateFoods(list, this.state.activeCategory);
-        this.setState({ ...this.state, filteredFoods: list, showFavs: !this.state.showFavs });
+        this.setState({ ...this.state, filteredFoods: list, showFavs: !this.state.showFavs, showDate: false });
     }
 
     render() {
@@ -237,9 +239,11 @@ class Search extends Component {
                 <Divider light />
 
                 <Box sx={{ display: 'flex', mt: 2, alignItems: 'center', justifyContent: 'space-between'}}>
-                    <Typography variant="h5" sx={{ mt: 2, display: 'flex', alignItems: 'center'}}>Current Category: 
-                        <Typography color="secondary" variant="h4" sx={{ml: 2}}>{capitalize(this.state.activeCategory)}</Typography>
-                    </Typography>
+                    <Box sx={{ my: 2, display: 'flex', alignItems: 'center'}}>
+                        <Typography variant="h5" >Current Category:</Typography>
+                        <Typography color="secondary" variant="h4" sx={{ ml: 2}}>{capitalize(this.state.activeCategory)}</Typography>
+                    </Box>
+
                     <Button
                         variant="outlined"
                         size="small"
@@ -281,7 +285,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = { initFoods, updateFoods, updateMacros };
 //dispatch => 
-    /*return {
+    /*return { /
         initFoods: (userId, token, date, catergory) => dispatch(actions.initFoods(userId, token, date, catergory)),
         //initCategories: (userId, token, date) => dispatch(actions.initFoodCategories(userId, token, date)),
         onUpdateFoods: (newFoods, category) => dispatch(actions.updateFoods(newFoods, category)),

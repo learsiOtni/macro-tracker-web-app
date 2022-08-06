@@ -141,7 +141,12 @@ class Overview extends Component {
 
                 <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between' }}>
                     <Typography component="h6" variant="h4">Weekly Overview</Typography>
-                    <MacrosModal macros={this.props.macros} onSubmit={this.onSubmitMacros}/>
+                    <MacrosModal 
+                        macros={this.props.macros} 
+                        onSubmit={this.onSubmitMacros} 
+                        variant="outlined" 
+                        color="secondary"
+                    />
                 </Box>
 
                 {this.props.foodWeekLists && <DayPanels
