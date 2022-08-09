@@ -6,9 +6,13 @@ import { deepPurple } from '@mui/material/colors';
 import { signupForm } from './signupForm';
 import { Form } from '../../components';
 import * as actions from '../../store/actions';
+import { useEffect } from 'react';
 
 const Signup = (props) => {
 
+    useEffect( () => {
+        props.onAuthStart();
+    }, [])
 
     const submitHandler = (state) => {
         const signupData = {name: state.name.value};
@@ -20,8 +24,6 @@ const Signup = (props) => {
     const handleSignin = () => {
         navigate('../signin');
     }
-
-
 
     return (
         <Container component="main" maxWidth="xs">

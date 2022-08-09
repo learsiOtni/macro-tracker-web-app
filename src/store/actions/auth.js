@@ -19,12 +19,9 @@ export const authLogout = () => {
 // Sign in / sign up
 export const auth = (email, password, signupData = null) => {
     return dispatch => {
-        console.log('here at auth');
         const authData = {email, password, returnSecureToken: true};
         let url = `accounts:signInWithPassword?key=${API_KEY}`;
         if (signupData) url = `accounts:signUp?key=${API_KEY}`;
-
-        console.log(email, password, url);
         
         axios.post(url, authData)
             .then( response => {
@@ -73,6 +70,7 @@ export const initAuth = () => {
                 dispatch(checkAuthTimeout( 
                     (expDate.getTime() - new Date().getTime()) / 1000 
                 ));
+                
             };
         };
     };

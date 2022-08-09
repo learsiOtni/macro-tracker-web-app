@@ -33,7 +33,6 @@ const macrosData = {
 }
 
 const MacroInfo = styled('div')({
-    padding: 20,
     textAlign: 'center',
     flexGrow: 1,
 })
@@ -46,7 +45,7 @@ const Macros = (props) => {
 
     return (
         <React.Fragment>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'center', mt: 3, mb: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'center', mt: 3, mb: 4 }}>
                 <Typography variant="h4">Your Macro</Typography>
                 
                 <MacrosModal macros={props.macros} onSubmit={macrosSubmitHandler}>
@@ -57,17 +56,16 @@ const Macros = (props) => {
             </Box>
             
 
-            <Container sx={{ display: 'flex', alignItems: "center" }}>
+            <Box sx={{ display: 'flex', alignItems: "center"}}>
 
                 { props.macros && Object.values(macrosData).map( macro => (
                     <MacroInfo key={macro.title}>
-                        {macro.icon}
+                        <div style={{opacity: "0.8"}}>{macro.icon}</div>
                         <Typography variant="subtitle2">{macro.title}</Typography>
                         <Typography variant="h6">{props.macros[macro.title.toLowerCase()]}</Typography>
                     </MacroInfo>
                 ))}
-
-            </Container>
+            </Box>
         </React.Fragment>
     )
 }

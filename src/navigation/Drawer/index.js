@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Drawer as MuiDrawer, Toolbar, IconButton, styled, Typography } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Links from '../Links';
@@ -7,9 +7,11 @@ import Links from '../Links';
 const drawerWidth = 250;
 
 const DrawerNav = styled(MuiDrawer, {
-
-})(({ theme }) => ({
+    shouldForwardProp: prop => prop!== 'open'
+})(({ theme, open }) => ({
+    display: !open && "none",
     '& .MuiDrawer-paper': {
+        display: 'inline-block',
         position: 'fixed',
         whiteSpace: 'noWrap',
         width: drawerWidth,
@@ -21,8 +23,10 @@ const DrawerNav = styled(MuiDrawer, {
 }))
 
 const Drawer = () => {
+    const [open, setOpen] = useState(true);
+
     return (
-        <DrawerNav variant="permanent" open>
+        <DrawerNav variant="permanent" open={open}>
             <Toolbar
                 sx={{
                     display: 'flex',

@@ -132,8 +132,9 @@ class Overview extends Component {
     };
 
     onSubmitMacros = (newEntry) => {
-        this.props.onUpdateMacros(this.props.userId, this.props.token, newEntry);
+        this.props.updateMacros(this.props.userId, this.props.token, newEntry);
     };
+    
 
     render() {
         return (

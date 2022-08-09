@@ -22,12 +22,12 @@ const Signin = (props) => {
     let navigate = useNavigate();
 
     const submitHandler = (state) => {
-        navigate("../")
         props.onAuth(state.email.value, state.password.value);
+        if(props.token) navigate("../", { replace: 'true'})
     }
 
     const handleSignup = () => {
-        navigate("../signup")
+        navigate("../signup", { replace: 'true'})
     }
 
     

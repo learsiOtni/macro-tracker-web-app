@@ -11,14 +11,6 @@ import MealPlans from './MealPlans';
 
 class Home extends Component {
 
-    state = {
-        
-    };
-    
-    componentDidMount() {
-        
-    }
-
     render() {
         
         
