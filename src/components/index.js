@@ -10,10 +10,11 @@ import MacrosModal from './MacrosModal';
 import SearchField from './SearchField';
 import Card from './Card';
 import PieChart from './PieChart';
+import Alert from './Alert';
 
 export {
     Button,DatePicker,Dropdown,Form,
     Input, ItemFields, Macros, Modal, 
     MacrosModal, SearchField, Card,
-    PieChart
+    PieChart, Alert
 };

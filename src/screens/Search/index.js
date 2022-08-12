@@ -141,19 +141,29 @@ class Search extends Component {
 
     showFavsHandler = () => {
         let list;
-        
-        if (!this.state.showFavs) {
+        let showFavs = !this.state.showFavs;
+
+        if (!this.state.showFavs && this.props.favs) {
+
             Object.entries(this.props.favs).forEach(([foodId, isFav]) => {
                 if (isFav) {
                     list = { ...list, [foodId]: this.props.foodBaseValues[foodId] }
                 }
             })
+
+            // if theres a list in the database but all of them (thier isFav prop) are false
+            if (!list) {
+                list = this.props.foodBaseValues;
+                showFavs = false;
+            }
         } else {
             list = this.props.foodBaseValues;
         }
 
         this.props.updateFoods(list, this.state.activeCategory);
-        this.setState({ ...this.state, filteredFoods: list, showFavs: !this.state.showFavs, showDate: false });
+
+        
+        this.setState({ ...this.state, filteredFoods: list, showFavs, showDate: false });
     }
 
     render() {

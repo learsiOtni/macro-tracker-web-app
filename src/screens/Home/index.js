@@ -13,7 +13,6 @@ class Home extends Component {
 
     render() {
         
-        
         return (
             <Box component="main" sx={{ marginLeft: '250px', p: 4, mt: 8 }}>
                 {!this.props.token && <Navigate to='/signin' />}

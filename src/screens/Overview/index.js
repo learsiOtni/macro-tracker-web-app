@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from '../../axios/axios-foods';
-import { Box, Typography, Container, Divider } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { connect } from 'react-redux';
 import { initFoodCategories, initFoodsWeek, updateMacros } from '../../store/actions';
 
 import { formatDate, convertMacrosToQtys, getCategory, getFoodKey } from '../../shared/utility';
-import { MacrosModal } from '../../components';
+import { MacrosModal, Alert } from '../../components';
 import DayPanels from './DayPanels';
 
 class Overview extends Component {
@@ -18,6 +18,7 @@ class Overview extends Component {
             activeModal: '', //date
             inEditMode: false,
             openMacros: false,
+            alertMessage: '',
         };
     }
 
@@ -97,7 +98,8 @@ class Overview extends Component {
                 axios.put(url, updatedData)
                 .then( response => {
                     this.initWeekHandler();
-                    alert('Added to DB');
+                    this.setState({ ...this.state, alertMessage: 'Successfully edited!'})
+                    //alert('Added to DB');
                 })
                 .catch( error => {
                     console.log(error)
@@ -116,15 +118,16 @@ class Overview extends Component {
 
     onRemoveItem = (foodId) => {
 
-        const selectedDate = this.state.activeModal, 
-            category = getCategory(foodId), foodKey = getFoodKey(foodId);
+        const selectedDate = this.state.activeModal;
+        const category = getCategory(foodId);
+        const foodKey = getFoodKey(foodId);
 
         axios.delete(`users/${this.props.userId}/dates/${selectedDate}/${category}/${foodKey}.json?auth=${this.props.token}`)
             .then(response => {
                 // update category
                 this.props.initFoodCategories(this.props.userId, this.props.token, selectedDate);
                 this.initWeekHandler();
-                alert('DELETED');
+                this.setState({ ...this.state, alertMessage: 'Successfully deleted the item!'})
             })
             .catch(error => {
                 console.log(error);
@@ -159,6 +162,12 @@ class Overview extends Component {
                     editMode={this.editModeHandler}
                     inEditMode={this.state.inEditMode}
                     onRemoveItem={this.onRemoveItem}
+                />}
+
+                {this.state.alertMessage && <Alert
+                    severity="success"
+                    title="Success"
+                    message={this.state.alertMessage}
                 />}
             </Box>
         );

@@ -67,6 +67,7 @@ export const signupForm = {
         validation: {
             required: true,
             minLength: 8,
+            confirmPass: true,
         },
         valid: true,
     }

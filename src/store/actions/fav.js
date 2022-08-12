@@ -8,7 +8,13 @@ export const initFav = (userId, token) => {
     return dispatch => {
         axios.get(`users/${userId}/favs.json?auth=${token}`)
             .then( response => {
-                dispatch(setFav(response.data))
+
+                let tempObject = {};
+
+                Object.entries(response.data).forEach( ([foodId, props]) => {
+                    tempObject = {...tempObject, [foodId]: props.isFav}
+                });
+                dispatch(setFav(tempObject));
             })
             .catch( error => dispatch(fetchFavFailed(error)) );
     };
@@ -22,12 +28,15 @@ export const addRemoveFav = (userId, token, favId) => {
 
         axios.get(`users/${userId}/favs/${favId}.json?auth=${token}`)
             .then(response => {
-                let value = !response.data;
+                let newValue = false;
 
-                axios.put(`users/${userId}/favs/${favId}.json?auth=${token}`, value)
+                if (response.data) newValue = !response.data.isFav;
+                if (!response.data) newValue = true;
+
+                axios.put(`users/${userId}/favs/${favId}.json?auth=${token}`, {'isFav': newValue})
                     .then(response => {
                         console.log(response);
-                        if (value) dispatch(addFav(favId));
+                        if (newValue) dispatch(addFav(favId));
                         else dispatch(removeFav(favId));
                     })
             })

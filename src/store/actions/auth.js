@@ -35,7 +35,7 @@ export const auth = (email, password, signupData = null) => {
 
                 signupData && axiosData.put(`users/${userId}.json`, signupData)
                     .then( response => {
-                        alert('user info added to db');
+                        //alert('user info added to db');
                     })
                     .catch( error => {
                         console.log(error);

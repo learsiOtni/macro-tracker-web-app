@@ -87,11 +87,15 @@ class Form extends Component {
         event.preventDefault();
         let errors = false, updatedForm = {...this.state.form};
 
-        Object.entries(this.state.form).forEach( ([id, input]) => {
+        Object.entries(this.state.form).forEach( ([id, input]) => {{}
             let hasError = checkValidity(id, input.value, input.validation ); // (name, value, rules)
             //confirm Pass
-            if (id === 'confirmPass') 
+            if (id === 'confirmPass') {
+                console.log(input.value)
+                console.log(this.state.form.password.value)
                 hasError = checkValidity(id, input.value, input.validation, this.state.form.password.value);
+                console.log(hasError);
+            }
             //
             if (hasError) {
                 updatedForm = { ...updatedForm, [id]: { ...updatedForm[id], valid: false }};

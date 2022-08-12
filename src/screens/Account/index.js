@@ -40,7 +40,6 @@ class Account extends Component {
             .then(response => {
                 console.log(response);
                 alert('ADDED TO DB');
-
             })
             .catch(error => {
                 console.log(error);
