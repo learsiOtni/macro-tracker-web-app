@@ -7,13 +7,14 @@ import theme from './theme';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { authReducer, favReducer, foodsReducer, macrosReducer } from './store/reducers';
+import { authReducer, favReducer, foodsReducer, macrosReducer, uiReducer } from './store/reducers';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   fav: favReducer,
   foods: foodsReducer,
   macros: macrosReducer, 
+  ui: uiReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

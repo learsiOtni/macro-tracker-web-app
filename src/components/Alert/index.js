@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Alert as MuiAlert, AlertTitle, styled } from '@mui/material';
+import AlertMessage from './AlertMessage';
+import { styled } from '@mui/material';
 
-const AlertMessage = styled(MuiAlert, {
-    shouldForwardProp: props => props !== 'show'
-})(({show}) => ({
-    display: !show && 'none',
-    position: 'absolute',
-    top: '90%',
-    left: '70%'
-}))
+
+const AlertContainer = styled('div')({
+    position: 'fixed',
+    bottom: 0,
+    right: 0,
+    padding: '30px'
+})
 
 const Alert = (props) => {
-
-    const [show, setShow] = useState(true)
-
-    useEffect( () => {
-
-        setTimeout( () => setShow(false), 2000);
-    }, [props.message])
-
     return (
-        <AlertMessage severity={props.severity} show={show}>
-            <AlertTitle>{props.title}</AlertTitle>
-            {props.message} — <strong>check it out!</strong>
-        </AlertMessage>
+        <AlertContainer>
+            {
+                props.alertMessages && props.alertMessages.map(
+                    alertMessage => <AlertMessage 
+                        key={alertMessage.id} 
+                        alertMessage={alertMessage}
+                    />)
+            }
+        </AlertContainer>
     )
 }
 

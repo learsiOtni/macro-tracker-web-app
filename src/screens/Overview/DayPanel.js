@@ -71,7 +71,7 @@ const DayPanel = (props) => {
                 subheader='Total Macros:'
 
                 action={ 
-                    props.activeModal && <Button onClick={props.editMode}>
+                    props.activeModal && <Button onClick={props.editMode} disabled={!props.foods}>
                         <EditIcon />
                         {props.inEditMode ? 'SAVE CHANGES' : 'EDIT MODE'}
                     </Button>
@@ -126,7 +126,7 @@ const DayPanel = (props) => {
                                 </Box>
                             )
                         }) : (
-                            <Typography variant="subtitle2">It is empty. Start adding food now.</Typography>
+                            <Typography variant="subtitle2" sx={{ml: 2}}>It is empty. Start adding food now.</Typography>
                         )
                     }
                 </CardContent>

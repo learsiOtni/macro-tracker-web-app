@@ -39,7 +39,14 @@ class Account extends Component {
         axios.post(`foods.json?auth=${this.props.token}`, newEntry)
             .then(response => {
                 console.log(response);
-                alert('ADDED TO DB');
+                
+                this.props.addAlertMessage({
+                    id: `01`,
+                    title: "Success",
+                    message: `Successfully added the entry to the database!`,
+                    severity: 'success',
+                    expiryTime: 2000
+                })
             })
             .catch(error => {
                 console.log(error);

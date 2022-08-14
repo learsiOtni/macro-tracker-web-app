@@ -9,6 +9,7 @@ import Header from './Header';
 import Drawer from './Drawer';
 import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
+import Alert from '../components/Alert';
 
 
 class RootNavigator extends Component {
@@ -19,7 +20,6 @@ class RootNavigator extends Component {
     }
     
     render() {
-
         return (
             <BrowserRouter>
                 <CssBaseline />
@@ -34,6 +34,10 @@ class RootNavigator extends Component {
                     :
                     <AppNavigator userId={this.props.userId} token={this.props.token} />
                 ) }
+
+                {this.props.alertMessages && <Alert
+                    alertMessages={this.props.alertMessages}
+                />}
             </BrowserRouter>
         ) 
     };
@@ -43,6 +47,7 @@ const mapStateToProps = state => ({
     token: state.auth.token, 
     userId: state.auth.userId,
     isAppReady: state.auth.isAppReady,
+    alertMessages: state.ui.alertMessages,
 });
 
 const mapDispatchToProps = dispatch => ({

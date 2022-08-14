@@ -3,7 +3,7 @@ import axios from '../../axios/axios-foods';
 import { connect } from 'react-redux';
 import { Box, Button, Grid, Typography, Paper, Divider } from '@mui/material';
 
-import { initFoods, updateFoods, updateMacros } from '../../store/actions';
+import { initFoods, updateFoods, updateMacros, addAlertMessage } from '../../store/actions';
 import { ItemFields, SearchField, DatePicker } from '../../components'
 
 import { formatDate, capitalize } from '../../shared/utility';
@@ -85,7 +85,14 @@ class Search extends Component {
         axios.put(url, qty)
             .then(response => {
                 this.initFoodsHandler();
-                alert('Added to DB');
+                console.log('added item');
+                this.props.addAlertMessage({
+                    id: `${foodId}-alert`,
+                    title: "Success",
+                    message: `Successfully added ${capitalize(this.props.foodBaseValues[foodId].name)}!`,
+                    severity: 'success',
+                    expiryTime: 2000
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -100,7 +107,14 @@ class Search extends Component {
             .then( response => {
                 // update category
                 this.initFoodsHandler();
-                alert('DELETED');
+                
+                this.props.addAlertMessage({
+                    id: `${foodId}-alert`,
+                    title: "Success",
+                    message: `Successfully deleted ${capitalize(this.props.foodBaseValues[foodId].name)}!`,
+                    severity: 'success',
+                    expiryTime: 2000
+                })
             })
             .catch( error => {
                 console.log(error);
@@ -293,7 +307,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = { initFoods, updateFoods, updateMacros };
+const mapDispatchToProps = { initFoods, updateFoods, updateMacros, addAlertMessage };
 //dispatch => 
     /*return { /
         initFoods: (userId, token, date, catergory) => dispatch(actions.initFoods(userId, token, date, catergory)),

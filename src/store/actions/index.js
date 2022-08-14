@@ -26,3 +26,8 @@ export {
     initMacros,
     updateMacros,
 } from './macros';
+
+export {
+    addAlertMessage,
+    removeAlertMessage,
+} from './ui';

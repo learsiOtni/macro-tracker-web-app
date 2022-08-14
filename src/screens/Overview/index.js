@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from '../../axios/axios-foods';
 import { Box, Typography } from '@mui/material'
 import { connect } from 'react-redux';
-import { initFoodCategories, initFoodsWeek, updateMacros } from '../../store/actions';
+import { initFoodCategories, initFoodsWeek, updateMacros, addAlertMessage } from '../../store/actions';
 
-import { formatDate, convertMacrosToQtys, getCategory, getFoodKey } from '../../shared/utility';
-import { MacrosModal, Alert } from '../../components';
+import { formatDate, convertMacrosToQtys, getCategory, getFoodKey, getDay } from '../../shared/utility';
+import { MacrosModal } from '../../components';
 import DayPanels from './DayPanels';
 
 class Overview extends Component {
@@ -18,7 +18,6 @@ class Overview extends Component {
             activeModal: '', //date
             inEditMode: false,
             openMacros: false,
-            alertMessage: '',
         };
     }
 
@@ -91,15 +90,22 @@ class Overview extends Component {
             // Then dont run the axios request,
             // If they are not, then run and add changes to DB
 
-            // transform foodCategory to just have qty: number
-            if(foodCategories) {
+            const messageId = activeModal;
+            if(foodCategories) { // transform foodCategory to just have qty: number
                 updatedData = convertMacrosToQtys(foodCategories);
 
                 axios.put(url, updatedData)
                 .then( response => {
+
                     this.initWeekHandler();
-                    this.setState({ ...this.state, alertMessage: 'Successfully edited!'})
-                    //alert('Added to DB');
+
+                    this.props.addAlertMessage({
+                        id: `${messageId}-alert`,
+                        title: "Success",
+                        message: `Successfully edited ${getDay(messageId)}!`,
+                        severity: 'success',
+                        expiryTime: 2000
+                    })
                 })
                 .catch( error => {
                     console.log(error)
@@ -127,7 +133,15 @@ class Overview extends Component {
                 // update category
                 this.props.initFoodCategories(this.props.userId, this.props.token, selectedDate);
                 this.initWeekHandler();
-                this.setState({ ...this.state, alertMessage: 'Successfully deleted the item!'})
+
+                this.props.addAlertMessage({
+                    id: `${foodId}-alert`,
+                    title: "Success",
+                    message: `Successfully deleted the item ${foodKey}!`,
+                    severity: 'success',
+                    expiryTime: 2000
+                })
+
             })
             .catch(error => {
                 console.log(error);
@@ -163,12 +177,6 @@ class Overview extends Component {
                     inEditMode={this.state.inEditMode}
                     onRemoveItem={this.onRemoveItem}
                 />}
-
-                {this.state.alertMessage && <Alert
-                    severity="success"
-                    title="Success"
-                    message={this.state.alertMessage}
-                />}
             </Box>
         );
     };
@@ -185,6 +193,6 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = { initFoodCategories, initFoodsWeek, updateMacros };
+const mapDispatchToProps = { initFoodCategories, initFoodsWeek, updateMacros, addAlertMessage };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);

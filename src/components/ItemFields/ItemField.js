@@ -96,7 +96,7 @@ const ItemField = (props) => {
                 </div>}
 
 
-                <div>
+                <div style={{display: 'flex', alignItems: 'center'}}>
                     <Typography component="span" variant="body2" sx={{ ml: 2, mr: 1 }}>QTY:</Typography>
                     <Input
                         ref={inputRef}

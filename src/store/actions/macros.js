@@ -1,5 +1,6 @@
 import * as actions from './types';
 import axios from '../../axios/axios-foods';
+import { addAlertMessage } from './ui';
 
 export const setMacros = (macros) => ({ type: actions.SET_MACROS, macros });
 export const fetchMacrosFailed = (error) => ({ type: actions.FETCH_MACROS_FAILED, error });
@@ -8,11 +9,23 @@ export const updateMacros = (userId, token, macros) => {
     return dispatch => {
         axios.put(`/users/${userId}/macros.json?auth=${token}`, macros)
             .then( response => {
-                alert('MACROS UPDATED');
                 dispatch(setMacros(macros));
+                dispatch(addAlertMessage({
+                    id: `MacrosUpdated`,
+                    title: "Success",
+                    message: `Successfully updated your Macros Goals!`,
+                    severity: 'success',
+                    expiryTime: 2000
+                }));
             })
             .catch( error => {
-                alert('Update FAILED!');
+                dispatch(addAlertMessage({
+                    id: `MacrosUpdateFail`,
+                    title: "Failed Update",
+                    message: {error},
+                    severity: 'error',
+                    expiryTime: 2000
+                }))
             });
     };
 };
