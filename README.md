@@ -10,15 +10,17 @@ Macro Tracker is a web application where users can log thier food, track thier d
 - A user can select a food from its food favorites.
 - A user can select a date.
 
-
 ## Features
 - Log a Food
   - 
-Add/Change Macros Goal
-fields get validated, no strings, no empty
-when updated, sent to database
+
+- Add/Change Macros Goal
+  - the macros goal submitted gets posted to the database, and the changes is fully
+  - the fields get validated (no strings can be entered, no empty field)
+  - 
 
 ## Future Features
+- 
 
 
 ## Dependencies
