@@ -31,39 +31,35 @@ class Search extends Component {
     };
 
     componentDidMount() {
-        if (this.props.foodBaseValues) this.initFoodsHandler();
+        //if (this.props.foodBaseValues) this.initFoodsHandler();
     };
 
     componentDidUpdate() {
+        // codes for qty edit
         let selectedInput = null;
         if (this.qtyInputRef) selectedInput = this.qtyInputRef.current;
-        if (selectedInput) { selectedInput.focus(); selectedInput.value = ''; };
+        if (selectedInput) { selectedInput.focus(); selectedInput.value = ''; }; 
     };
 
+    // initialises the food list mostly for dates, or when search field is cleared.
     initFoodsHandler = (date = '') => {
-        const { selectedDate, activeCategory } = this.state;
+        const { selectedDate, activeCategory, filteredFoods } = this.state;
         const { userId, token } = this.props;
         if (!date) date = selectedDate;
 
         this.props.initFoods(userId, token, date, activeCategory);
+        if (this.state.showFavs || this.state.search) this.props.updateFoods(filteredFoods, activeCategory);
     };
-
-    /*updateFoodsHandler = (list = this.state.filteredFoods, category = this.state.activeCategory) => {
-        let foods = list;
-        if (this.props.foodCategories[category]) 
-            foods = { ...foods, ...this.props.foodCategories[category] };
-
-        this.props.updateFoods(foods, category);
-    }*/
 
     /* Categories */
     categoriesHandler = (category) => {
         let foods = this.state.filteredFoods;
-        if (this.props.foodCategories[category]) 
+        if (this.props.foodCategories[category] && !this.state.showFavs && !this.state.search) {
             foods = { ...foods, ...this.props.foodCategories[category] };
+        }
 
         this.props.updateFoods(foods, category);
-        //this.updateFoodsHandler(null, category);
+
         this.setState({
             ...this.state,
             activeCategory: category,
@@ -84,8 +80,7 @@ class Search extends Component {
 
         axios.put(url, qty)
             .then(response => {
-                this.initFoodsHandler();
-                console.log('added item');
+                this.initFoodsHandler(); //updates
                 this.props.addAlertMessage({
                     id: `${foodId}-alert`,
                     title: "Success",
@@ -98,7 +93,7 @@ class Search extends Component {
                 console.log(error)
             });
 
-        this.setState({ ...this.state, showDropdown: false, search: '' });
+        this.setState({ ...this.state, showDropdown: false });
     };
 
     onRemoveItem = (foodId) => {
@@ -125,26 +120,30 @@ class Search extends Component {
 
     /* Date Component */
     dateSelected = selectedDate => {
-        this.initFoodsHandler(selectedDate);
+
+        this.initFoodsHandler(selectedDate)
         this.setState({ ...this.state, selectedDate, showDropdown: false, 
-            showDate: !this.state.showDate, search: '' });
+            showDate: !this.state.showDate });
     };
 
     dateNextPrev = selectedDate => {
-        this.initFoodsHandler(selectedDate);
-        this.setState({ ...this.state, selectedDate, showDropdown: false, search: '' });
+        
+        this.initFoodsHandler(selectedDate)
+        this.setState({ ...this.state, selectedDate, showDropdown: false });
     };
 
     dateToggled = () => this.setState({ ...this.state, showDate: !this.state.showDate});
 
     /* Search */
     searchHandler = (list) => {
-        !this.state.search ? this.initFoodsHandler() : this.props.updateFoods(list, this.state.activeCategory);
-        this.setState({ ...this.state, filteredFoods: list});
+        if (!this.state.showFavs) {
+            !this.state.search ? this.initFoodsHandler() : this.props.updateFoods(list, this.state.activeCategory);
+            this.setState({ ...this.state, filteredFoods: list, showFavs: false });
+        }
     };
 
     searchChanged = (event) => {
-        this.setState({ ...this.state, search: event.target.value });
+        this.setState({ ...this.state, search: event.target.value, showFavs: false });
     };
 
     // Dashboard
@@ -154,7 +153,7 @@ class Search extends Component {
     };
 
     showFavsHandler = () => {
-        let list;
+        let list = {};
         let showFavs = !this.state.showFavs;
 
         if (!this.state.showFavs && this.props.favs) {
@@ -171,18 +170,38 @@ class Search extends Component {
                 showFavs = false;
             }
         } else {
+            
             list = this.props.foodBaseValues;
         }
 
         this.props.updateFoods(list, this.state.activeCategory);
 
-        
-        this.setState({ ...this.state, filteredFoods: list, showFavs, showDate: false });
+        this.setState({ ...this.state, search: '', filteredFoods: list, showFavs, showDate: false });
     }
 
     render() {
+
+        /* FOODS for itemFields */
         let foods = {};
-        if (this.props.foodCategories) foods = this.props.foodCategories[this.state.activeCategory];
+
+        // Re-load the previous fav or search
+        // the state is stored in filteredFoods
+        if (this.props.foodCategories) {
+            foods = this.props.foodCategories[this.state.activeCategory]; //default data from database fetched from this.initFoodsHandler
+
+            let tempFood = {};
+            if (this.state.search || this.state.showFavs) {
+                Object.keys(this.state.filteredFoods).forEach( (key) => {
+                    tempFood = {
+                        ...tempFood,
+                        [key]: foods[key]
+                    }
+                });
+
+                foods = tempFood;
+            }
+        }
+        /* */
 
         return (
             <Box component="main" sx={{ marginLeft: '250px', p: 4, mt: 8 }}>
