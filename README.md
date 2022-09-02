@@ -10,6 +10,39 @@ Macro Tracker is a web application where users can log thier food, track thier d
 - A user can select a food from its food favorites.
 - A user can select a date.
 
+[Testing](facebook.com "Facebook")
+
+_Italic text here_
+
+**Bold text here**
+
+~~Strikethrough text~~
+
+| Shoe | Size | Price |
+| ---- | ---- | ----- |
+| Hyper Royal | UK8 | £149.00 |
+
+>It is very important not to override data
+>>Nested one iiinit
+
+`forEach()` is the way to add Code
+
+```JavaScript
+console.log('Hello World')
+```
+
+1. Item 1
+2. Item 2
+    * Subitem
+
+---
+* Unordered Item
+***
+
+To add a space put two spaces after  
+each line like this.
+
+
 ## Features
 - Log a Food
   - 
@@ -32,42 +65,26 @@ Macro Tracker is a web application where users can log thier food, track thier d
 
 
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/learsiOtni/macro-tracker-web-app">
     <h3 align="center">Macro Tracker</h3>
   </a>
 
 
   <p align="center">
-    project_description
+    A web app to track your daily macros.
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://macro-tracker-5e99c.web.app/signin">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="#">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="#">Request Feature</a>
   </p>
 </div>
 
@@ -104,7 +121,7 @@ Macro Tracker is a web application where users can log thier food, track thier d
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Macro Tracker Dashboard](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.pngt "Macro Tracker")]
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
