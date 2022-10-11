@@ -110,6 +110,8 @@ Install the latest npm version.
 A simple Login page.
 
 ![Login Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/login.png "Login Page")
+![Search_AdobeExpress-2](https://user-images.githubusercontent.com/108980854/195126803-4ee21ed7-6dfd-4760-a520-fb9a167f0f41.gif)
+
 
 You can login by creating your own account or using the following credentials:
 
