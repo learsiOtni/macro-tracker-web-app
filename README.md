@@ -133,7 +133,7 @@ Both the Login and Signup pages provide form validation.
 
 Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food list, edit its quantity if needed and add the item to the selected category. The total macros value will be reflected upon changes.
 
-[PUT VIDEO HERE]
+![Search_AdobeExpress](https://user-images.githubusercontent.com/108980854/195125949-c27e2320-9264-4a52-b285-e390ee06da26.gif)
 
 #### Features
 
