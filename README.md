@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 
 <br />
-<div align="center">
+<div align="center" id="readme-top">
   <a href="https://github.com/learsiOtni/macro-tracker-web-app">
     <h1 align="center">Macro Tracker</h1>
   </a>
@@ -18,9 +18,6 @@
     <br />
   </p>
 </div>
-
-![Banner](./assets/img/banner.png "Macro Tracker Banner")
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -60,14 +57,9 @@
 
 ![Macro Tracker Dashboard](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.png "Macro Tracker")
 
-Macro Tracker is a web application where users can log thier food, track thier daily macros goals, and have weekly food overview where macros can be adjusted slightly.
-
+Macro Tracker is a web application where users can log their food, track their daily macros goals, and have a weekly food overview where macros can be adjusted slightly.
 
 </br>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -84,7 +76,7 @@ Macro Tracker is a web application where users can log thier food, track thier d
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Get the project running in your own local server.
+Get the project running on your local server.
 
 ### Prerequisites
 
@@ -128,7 +120,9 @@ A simple Signup Page.
 
 ![Signup Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/signup.png "Signup Page")
 
-Both the Login and Signup page provide form validation.
+Both the Login and Signup pages provide form validation.
+
+</br>
 
 ### Search Page
 
@@ -147,18 +141,22 @@ Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food
 * Simple search filter to search for a particular food using its name.
 * Favourite button to display a list of the users' favourite food.
 * Food section to display a list of food each containing their macros information. Each food card features:
-  * Buttons to change the default quantity. The macros information is re-calculated every quantity change.
+  * Buttons to change the default quantity. The macros information is re-calculated for every quantity change.
     * `+` to increase the quantity by 1
-    * `-` to decrease the quanity by 1
-    * Edit button to enter a new value, can be decimal, in an input field. Provides input validation.
+    * `-` to decrease the quantity by 1
+    * Edit button to enter a new value, which can be decimal, in an input field. Provides input validation.
   * Add button to add the food to the selected category. User feedback message appears after adding. 
   * Heart button to add the food to favourites.
+
+</br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### Overview Page
 
 ![Overview Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/overview.png "Overview Page")
 
-Select a day from the weekly overview, click 'Edit Mode', browse through each categories, change the quantity of some items, remove some items, and save the changes.
+Select a day from the weekly overview, click 'Edit Mode', browse through each category, change the quantity of some items, remove some items, and save the changes.
 
 [PUT VIDEO HERE]
 
@@ -170,6 +168,8 @@ Select a day from the weekly overview, click 'Edit Mode', browse through each ca
   * Edit Mode button that reveals the quantity controls for each item. The total macros is re-calculated for every quantity change.
   * Save Changes button to save all the changes made during Edit Mode.
 
+</br>
+
 ### Dashboard Page
 
 ![Dashboard Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.png "Dashboard Page")
@@ -179,7 +179,7 @@ Select a day from the weekly overview, click 'Edit Mode', browse through each ca
 * Pop-up form to add/change the current macros goal.
 * Meal plan of the day section to view today's list of food with quantity.
 
-A lot more features to be implemented.
+A lot more features are to be implemented.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -189,7 +189,7 @@ A lot more features to be implemented.
 ## Future Features
 
 - App
-    - [ ] Mobile friendly design
+    - [ ] Mobile-friendly design
     - [ ] Logo
     - [ ] Increase food database
     - [ ] Implement a feature to Copy and Paste a list of items
@@ -201,6 +201,6 @@ A lot more features to be implemented.
 - Search
     - [ ] More complex search engine
 - Bugs
-    - [ ] Search Page - Quantity controls does not work if categories are changed very fast.
+    - [ ] Search Page - Quantity controls do not work if categories are changed very fast.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
