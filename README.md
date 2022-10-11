@@ -19,7 +19,7 @@
   </p>
 </div>
 
-![Banner](`../assets/img/banner.png` "Macro Tracker Banner")
+![Banner](`./assets/img/banner.png` "Macro Tracker Banner")
 
 
 
