@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 # About The Project
 
-![Macro Tracker Dashboard](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.png "Macro Tracker")
+![Macro Tracker](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/home.png "Macro Tracker")
 
 Macro Tracker is a web application where users can log their food, track their daily macros goals, and have a weekly food overview where macros can be adjusted slightly.
 
@@ -116,6 +116,8 @@ You can login by creating your own account or using the following credentials:
 >email: admin@gmail.com  
 >password: password
 
+</br>
+
 A simple Signup Page.
 
 ![Signup Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/signup.png "Signup Page")
@@ -123,6 +125,7 @@ A simple Signup Page.
 Both the Login and Signup pages provide form validation.
 
 </br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Search Page
 
