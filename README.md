@@ -1,92 +1,25 @@
-# Macro Tracker Web App
-Macro Tracker is a web application where users can log thier food, track thier daily macros goals, and have weekly food overview with the ability to adjust.
-
-## User Stories
-- A user can change thier macros goal.
-- A user can change to different categories and add a food.
-- A user can edit the quantity of the food.
-- A user can remove a food.
-- A user can search for a food.
-- A user can select a food from its food favorites.
-- A user can select a date.
-
-[Testing](facebook.com "Facebook")
-
-_Italic text here_
-
-**Bold text here**
-
-~~Strikethrough text~~
-
-| Shoe | Size | Price |
-| ---- | ---- | ----- |
-| Hyper Royal | UK8 | £149.00 |
-
->It is very important not to override data
->>Nested one iiinit
-
-`forEach()` is the way to add Code
-
-```JavaScript
-console.log('Hello World')
-```
-
-1. Item 1
-2. Item 2
-    * Subitem
-
----
-* Unordered Item
-***
-
-To add a space put two spaces after  
-each line like this.
-
-
-## Features
-- Log a Food
-  - 
-
-- Add/Change Macros Goal
-  - the macros goal submitted gets posted to the database, and the changes is fully
-  - the fields get validated (no strings can be entered, no empty field)
-  - 
-
-## Future Features
-- 
-
-
-## Dependencies
-
-
-## What the app looks like
-
-
-
-
-
-
 <!-- PROJECT LOGO -->
+
 <br />
 <div align="center">
   <a href="https://github.com/learsiOtni/macro-tracker-web-app">
-    <h3 align="center">Macro Tracker</h3>
+    <h1 align="center">Macro Tracker</h1>
   </a>
 
 
   <p align="center">
     A web app to track your daily macros.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <a href="https://macro-tracker-5e99c.web.app/signin">
+      <strong>View Demo</strong>
+    </a>
     <br />
     <br />
-    <a href="https://macro-tracker-5e99c.web.app/signin">View Demo</a>
-    ·
-    <a href="#">Report Bug</a>
-    ·
-    <a href="#">Request Feature</a>
   </p>
 </div>
+
+![Banner](`../assets/img/banner.png` "Macro Tracker Banner")
 
 
 
@@ -107,23 +40,30 @@ each line like this.
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#authentication-page">Authentication Page</a></li>
+        <li><a href="#search-page">Search Page</a></li>
+        <li><a href="#overview-page">Overview Page</a></li>
+        <li><a href="#dashboard-page">Dashboard Page</a></li>
+      </ul>
+    </li>
+    <li><a href="#future-features">Future Features</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+# About The Project
 
 ![Macro Tracker Dashboard](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.png "Macro Tracker")
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Macro Tracker is a web application where users can log thier food, track thier daily macros goals, and have weekly food overview where macros can be adjusted slightly.
+
+
+</br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -131,14 +71,11 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* React
+* MaterialUI
+* Redux
+* Firebase
+* Axios
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,12 +84,11 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Get the project running in your own local server.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Install the latest npm version.
 * npm
   ```sh
   npm install npm@latest -g
@@ -160,19 +96,15 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/learsiOtni/macro-tracker-web-app
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,71 +113,94 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Authentication Page
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+A simple Login page.
+
+![Login Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/login.png "Login Page")
+
+You can login by creating your own account or using the following credentials:
+
+>email: admin@gmail.com  
+>password: password
+
+A simple Signup Page.
+
+![Signup Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/signup.png "Signup Page")
+
+Both the Login and Signup page provide form validation.
+
+### Search Page
+
+![Search Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/search.png "Search Page")
+
+Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food list, edit its quantity if needed and add the item to the selected category. The total macros value will be reflected upon changes.
+
+[PUT VIDEO HERE]
+
+#### Features
+
+* Pop-up form to add/change the current macros goal.
+* Datepicker, coded from scratch, to navigate freely between dates. Vital for planning ahead.
+* Categories section to select which category to add to. Also, it provides a dropdown option to view the current total macros only for that selected category. Useful for counting macros per meal. 
+  * Delete button for each item. Useful for managing the macros.
+* Simple search filter to search for a particular food using its name.
+* Favourite button to display a list of the users' favourite food.
+* Food section to display a list of food each containing their macros information. Each food card features:
+  * Buttons to change the default quantity. The macros information is re-calculated every quantity change.
+    * `+` to increase the quantity by 1
+    * `-` to decrease the quanity by 1
+    * Edit button to enter a new value, can be decimal, in an input field. Provides input validation.
+  * Add button to add the food to the selected category. User feedback message appears after adding. 
+  * Heart button to add the food to favourites.
+
+### Overview Page
+
+![Overview Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/overview.png "Overview Page")
+
+Select a day from the weekly overview, click 'Edit Mode', browse through each categories, change the quantity of some items, remove some items, and save the changes.
+
+[PUT VIDEO HERE]
+
+#### Features
+
+* Pop-up form to add/change the current macros goal.
+* Weekly overview to visualize the total macros of each day against the users macros goals. Useful for making small changes.
+  * Remove button for each item.
+  * Edit Mode button that reveals the quantity controls for each item. The total macros is re-calculated for every quantity change.
+  * Save Changes button to save all the changes made during Edit Mode.
+
+### Dashboard Page
+
+![Dashboard Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/dashboard.png "Dashboard Page")
+
+#### Features
+
+* Pop-up form to add/change the current macros goal.
+* Meal plan of the day section to view today's list of food with quantity.
+
+A lot more features to be implemented.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Future Features
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+- App
+    - [ ] Mobile friendly design
+    - [ ] Logo
+    - [ ] Increase food database
+    - [ ] Implement a feature to Copy and Paste a list of items
+- Authentication
+    - [ ] Forgot password page
+    - [ ] Terms and conditions page
+- Dashboard
+    - [ ] Able to track other goals such as water intake
+- Search
+    - [ ] More complex search engine
+- Bugs
+    - [ ] Search Page - Quantity controls does not work if categories are changed very fast.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
