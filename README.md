@@ -110,8 +110,6 @@ Install the latest npm version.
 A simple Login page.
 
 ![Login Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/login.png "Login Page")
-![Search_AdobeExpress-2](https://user-images.githubusercontent.com/108980854/195126803-4ee21ed7-6dfd-4760-a520-fb9a167f0f41.gif)
-
 
 You can login by creating your own account or using the following credentials:
 
@@ -135,7 +133,7 @@ Both the Login and Signup pages provide form validation.
 
 Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food list, edit its quantity if needed and add the item to the selected category. The total macros value will be reflected upon changes.
 
-![Search_AdobeExpress](https://user-images.githubusercontent.com/108980854/195125949-c27e2320-9264-4a52-b285-e390ee06da26.gif)
+![Search](https://user-images.githubusercontent.com/108980854/195131318-7f61dc34-4f10-4322-b3ad-b81a5f95b30c.gif)
 
 #### Features
 
@@ -163,7 +161,7 @@ Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food
 
 Select a day from the weekly overview, click 'Edit Mode', browse through each category, change the quantity of some items, remove some items, and save the changes.
 
-[PUT VIDEO HERE]
+![Overview](https://user-images.githubusercontent.com/108980854/195131455-f2f3ae16-5afd-42c3-a5d6-4e9ac3b31631.gif)
 
 #### Features
 
