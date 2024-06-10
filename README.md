@@ -8,7 +8,7 @@
 
 
   <p align="center">
-    A web app to track your daily macros.
+    A web app to track your daily macros, helping you with your fitness goals.
     <br />
     <br />
     <a href="https://macro-tracker-5e99c.web.app/signin">
@@ -57,7 +57,9 @@
 
 ![Macro Tracker](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/home.png "Macro Tracker")
 
-Macro Tracker is a web application where users can log their food, track their daily macros goals, and have a weekly food overview where macros can be adjusted slightly.
+Macro Tracker is a web application where users can log their daily food intake, and in turn, the app will show the total amount of protein, carbs, fat, and calories each meal has. The users can set their macros goal, go to the search page, select a category: breakfast; snacks; lunch; dinner, and start adding a food. They can search for particular items or even add items to their favourites for easier filtering. Each category calculates the total amount of protein, carbs, fat, and calories for the food it contains, separate from the total of the day. There is also an overview page where the users can see their macros and calories in a weekly view.
+
+One of my hobbies was going to the gym and staying fit. Before developing this web app, the way I tracked my macros and calories was manually, using an Excel spreadsheet. In the Excel spreadsheet, I stored a data list of the food I ate. I would create a page template and start copying and pasting food items from the data list. Also, it was very difficult to tweak or edit things such as changing 100g to 80g. I also tried some fitness tracker apps but you have to pay after 2 weeks of free trial. That was when I decided to develop this macro tracker app. I use this app whenever I am cutting or reducing my calorie intake in preparation for the summer holidays.
 
 </br>
 
@@ -111,7 +113,7 @@ A simple Login page.
 
 ![Login Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/login.png "Login Page")
 
-You can login by creating your own account or using the following credentials:
+You can log in by creating your account or using the following credentials:
 
 >email: admin@gmail.com  
 >password: password
@@ -131,7 +133,7 @@ Both the Login and Signup pages provide form validation.
 
 ![Search Page](https://github.com/learsiOtni/macro-tracker-web-app/blob/main/screenshots/search.png "Search Page")
 
-Select a category from: Breakfast, Snack, Lunch, Dinner. Browse through the food list, edit its quantity if needed and add the item to the selected category. The total macros value will be reflected upon changes.
+Select a category: Breakfast, Snack, Lunch, Dinner. Browse through the food list, edit its quantity if needed, and add the item to the selected category. The total macros value will be reflected upon changes.
 
 ![Search](https://user-images.githubusercontent.com/108980854/195131318-7f61dc34-4f10-4322-b3ad-b81a5f95b30c.gif)
 
@@ -166,9 +168,9 @@ Select a day from the weekly overview, click 'Edit Mode', browse through each ca
 #### Features
 
 * Pop-up form to add/change the current macros goal.
-* Weekly overview to visualize the total macros of each day against the users macros goals. Useful for making small changes.
+* Weekly overview to visualize the total macros of each day against the user's macros goals. Useful for making small changes.
   * Remove button for each item.
-  * Edit Mode button that reveals the quantity controls for each item. The total macros is re-calculated for every quantity change.
+  * Edit Mode button that reveals the quantity controls for each item. The total macros are re-calculated for every quantity change.
   * Save Changes button to save all the changes made during Edit Mode.
 
 </br>
